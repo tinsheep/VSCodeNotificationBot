@@ -1,0 +1,50 @@
+{
+    "solution": {
+        "provisionSucceeded": true,
+        "teamsAppTenantId": "a6218add-62d4-4c65-a992-da1ec5d85e38",
+        "subscriptionId": "db2288de-c51a-4120-8628-030ab42e079e",
+        "subscriptionName": "Visual Studio Enterprise Subscription",
+        "tenantId": "a6218add-62d4-4c65-a992-da1ec5d85e38",
+        "needCreateResourceGroup": true,
+        "resourceGroupName": "VSCodeNotificationBot-dev-rg",
+        "location": "Central US",
+        "resourceNameSuffix": "9d162a"
+    },
+    "fx-resource-appstudio": {
+        "tenantId": "a6218add-62d4-4c65-a992-da1ec5d85e38",
+        "teamsAppId": "e893eea5-0062-4963-b857-653a836a20c6"
+    },
+    "fx-resource-frontend-hosting": {
+        "indexPath": "/index.html#",
+        "domain": "vscodenoti6d9f4etab.z19.web.core.windows.net",
+        "endpoint": "https://vscodenoti6d9f4etab.z19.web.core.windows.net",
+        "storageResourceId": "/subscriptions/db2288de-c51a-4120-8628-030ab42e079e/resourceGroups/VSCodeNotificationBot-dev-rg/providers/Microsoft.Storage/storageAccounts/vscodenoti6d9f4etab"
+    },
+    "fx-resource-aad-app-for-teams": {
+        "clientId": "f121d94b-0c0b-4833-9ded-2415561267b5",
+        "clientSecret": "{{fx-resource-aad-app-for-teams.clientSecret}}",
+        "objectId": "93ec24b2-6fc0-42ac-90ec-0f8d6b90f62f",
+        "oauth2PermissionScopeId": "6e38812b-85cc-446f-8135-a862b0e80279",
+        "tenantId": "a6218add-62d4-4c65-a992-da1ec5d85e38",
+        "oauthHost": "https://login.microsoftonline.com",
+        "oauthAuthority": "https://login.microsoftonline.com/a6218add-62d4-4c65-a992-da1ec5d85e38",
+        "applicationIdUris": "api://vscodenoti6d9f4etab.z19.web.core.windows.net/botid-1c3951c8-9942-462a-b8fd-de534645cd47",
+        "botId": "1c3951c8-9942-462a-b8fd-de534645cd47",
+        "frontendEndpoint": "https://vscodenoti6d9f4etab.z19.web.core.windows.net"
+    },
+    "fx-resource-bot": {
+        "botId": "1c3951c8-9942-462a-b8fd-de534645cd47",
+        "botPassword": "{{fx-resource-bot.botPassword}}",
+        "sku": "B1",
+        "appName": "vscodenoti6d9f4ebot",
+        "domain": "vscodenoti6d9f4ebot.azurewebsites.net",
+        "appServicePlanName": "vscodenoti6d9f4ebot",
+        "functionAppResourceId": "/subscriptions/db2288de-c51a-4120-8628-030ab42e079e/resourceGroups/VSCodeNotificationBot-dev-rg/providers/Microsoft.Web/sites/vscodenoti6d9f4ebot",
+        "functionEndpoint": "https://vscodenoti6d9f4ebot.azurewebsites.net"
+    },
+    "fx-resource-identity": {
+        "identityName": "vscodenoti6d9f4e",
+        "identityResourceId": "/subscriptions/db2288de-c51a-4120-8628-030ab42e079e/resourceGroups/VSCodeNotificationBot-dev-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/vscodenoti6d9f4e",
+        "identityClientId": "a261f2aa-6ab8-4759-989d-71e6107d70a3"
+    }
+}
