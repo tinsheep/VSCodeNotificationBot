@@ -2,8 +2,8 @@
 const notificationTemplate = require("./adaptiveCards/notification-default.json");
 const { AdaptiveCards } = require("@microsoft/adaptivecards-tools");
 const { bot } = require("./internal/initialize");
-//try this:
 const { AppCredential, createMicrosoftGraphClientWithCredential } = require("@microsoft/teamsfx");
+const { ResponseType } = require('@microsoft/microsoft-graph-client');
 
 // HTTP trigger to send notification. You need to add authentication / authorization for this API. Refer https://aka.ms/teamsfx-notification for more details.
 module.exports = async function (context, req) {
@@ -17,15 +17,15 @@ module.exports = async function (context, req) {
       clientSecret: process.env.M365_CLIENT_SECRET
     }
     const appCredential = new AppCredential(appAuthConfig)
-    //const token = appCredential.getToken()
     const graphClient = createMicrosoftGraphClientWithCredential(appCredential);
 
+       
     //create Incident response team from a teamsTemplate
 
     const teamTemplate = {
       'template@odata.bind': 'https://graph.microsoft.com/v1.0/teamsTemplates(\'' + process.env.TEAMS_TEMPLATE_ID  +  '\')',
-      displayName: 'My Incident A',
-      description: 'My Incident A description',
+      displayName: 'My Incident 327-1',
+      description: 'My Incident 327-1 description',
       members:[
           {
              '@odata.type': '#microsoft.graph.aadUserConversationMember',
@@ -37,8 +37,24 @@ module.exports = async function (context, req) {
       ]
     }
 
-    const team = await graphClient.api('/teams').post(teamTemplate);
-    
+    const team = await graphClient
+        .api('/teams')
+        .responseType(ResponseType.RAW)
+        .post(teamTemplate);
+    console.log(team.headers.get('client-request-id'));
+
+    // get the URL value where we can make the call to check if the asynchonous operation to create the Team is complete.
+    // this can take a minute or so
+    const location = team.headers.get('Location')
+
+    let teamStatus = "inProgress";
+    while (teamStatus != "succeeded") {
+      const checkStatusResponse = await graphClient.api(location).get();
+      teamStatus = checkStatusResponse.status;
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+    }
+    console.log("Team created successfully!");
+
 
     //********************************************************/
 
